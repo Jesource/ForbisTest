@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.List;
+
 @Controller("/")
 @Slf4j
 public class MainController {
@@ -26,9 +28,9 @@ public class MainController {
     public String proceedText(Model model, @RequestParam String inputText) {
         log.info("Text imputed to process: " + inputText);
 
-        model.addAttribute(
-                "tokens",
-                mainPageService.proceedTextInput(inputText));
+        List<String> formattedOutput = mainPageService.proceedTextInput(inputText);
+//        mainPageService.writeToFile(formattedOutput);
+        model.addAttribute("tokens", formattedOutput);
 
         return "index";
     }
