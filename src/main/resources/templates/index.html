@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Main Page</title>
+</head>
+<body>
+<h1>Hello there!</h1>
+<div>
+    <form action="#" th:action="@{/}" method="post">
+        <textarea name="inputText" placeholder="Write your text here">State mate web mate lab 4fun late fatE</textarea>
+        <br>
+        <button type="submit">Process text</button>
+    </form>
+</div>
+
+<div th:if="${tokens}">
+    <h2>There is output:</h2>
+    <p th:text="${tokens}"></p>
+</div>
+
+<div th:if="${tokens}">
+    <tr th:each="string: ${tokens}">
+        <td th:text="${string}"></td>
+        <br>
+    </tr>
+</div>
+</body>
+</html>
