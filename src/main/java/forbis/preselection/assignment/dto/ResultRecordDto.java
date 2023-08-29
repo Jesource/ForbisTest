@@ -19,9 +19,6 @@ public class ResultRecordDto {
     }
 
     private void mapRecordString(String record) {
-        if (record == null) {
-            throw new IllegalArgumentException("Empty record string was passed");
-        }
         try {
             JSONObject jsonObject = new JSONObject(record);
             setTimestamp(LocalDateTime.parse((CharSequence) jsonObject.get("timestamp")));

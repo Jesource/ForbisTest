@@ -45,9 +45,10 @@ public class WritingToFileUtil {
 
     private static void createBaseFolderIfNeeded() {
         File baseFolder = new File(BASE_FOLDER);
+
         if (!baseFolder.exists()) {
             baseFolder.mkdir();
-            log.info("Folder {} was created", BASE_FOLDER);
+            log.info("Folder '{}' was created", BASE_FOLDER);
         }
     }
 
