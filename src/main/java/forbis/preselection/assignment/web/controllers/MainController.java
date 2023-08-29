@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -25,11 +26,13 @@ public class MainController {
 
 
     @PostMapping
-    public String proceedText(Model model, @RequestParam String inputText) {
-        log.info("Text imputed to process: " + inputText);
+    public String proceedInput(Model model,
+                               @RequestParam String inputText,
+                               @RequestParam MultipartFile inputFile) {
+        log.info("Text imputed to process: {}", inputText);
+        log.info("File imputed to process: {}", inputFile.getName());
 
-        List<String> formattedOutput = mainPageService.proceedTextInput(inputText);
-//        mainPageService.writeToFile(formattedOutput);
+        List<String> formattedOutput = mainPageService.proceedInput(inputText, inputFile);
         model.addAttribute("tokens", formattedOutput);
 
         return "index";

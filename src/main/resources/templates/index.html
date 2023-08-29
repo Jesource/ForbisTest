@@ -7,8 +7,12 @@
 <body>
 <h1>Hello there!</h1>
 <div>
-    <form action="#" th:action="@{/}" method="post">
-        <textarea name="inputText" placeholder="Write your text here">State mate web mate lab 4fun late fatE</textarea>
+    <form action="#" th:action="@{/}" method="post" enctype="multipart/form-data">
+        <textarea name="inputText" placeholder="Write your text here"></textarea>
+        <br>
+        <p>
+            Upload yor text file: <input type="file" name="inputFile" >
+        </p>
         <br>
         <button type="submit">Process text</button>
     </form>
