@@ -29,7 +29,7 @@ public class WritingToFileUtil {
     private static void writeResultToFile(FileWriter fileWriter, ResultRecord result) throws IOException {
         JSONObject document = new JSONObject();
 
-        document.put("timestamp", LocalDateTime.now());
+        document.put("timestamp", LocalDateTime.now().toString());
         document.put("formatted_result", result.getFormattedTokenGroupsAsStrings());
         fileWriter.append(document + "\n").flush();
         fileWriter.close();
