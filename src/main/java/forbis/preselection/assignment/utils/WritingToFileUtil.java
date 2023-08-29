@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDateTime;
 
 @Slf4j
 @Service
@@ -28,6 +29,7 @@ public class WritingToFileUtil {
     private static void writeResultToFile(FileWriter fileWriter, ResultRecord result) throws IOException {
         JSONObject document = new JSONObject();
 
+        document.put("timestamp", LocalDateTime.now());
         document.put("formatted_result", result.getFormattedTokenGroupsAsStrings());
         fileWriter.append(document + "\n").flush();
         fileWriter.close();
