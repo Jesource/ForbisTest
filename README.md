@@ -2,9 +2,9 @@
 
 ## Option A: running executable
 
-1. Go to `compiled` folder ([click here](compiled/ForbisTest.jar))
-2. Run executable named `ForbisTest.jar` with command `java -jar ForbisTest.jar`
-
+1. Go to `compiled` folder ([click here](compiled/))
+2. Download executable named `ForbisTest.jar`
+3. Run `ForbisTest.jar` with command `java -jar ForbisTest.jar`
 
 
 ## Option B: running project
