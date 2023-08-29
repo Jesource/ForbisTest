@@ -9,6 +9,10 @@ public class ResultRecord {
     private Map<Character, TokenGroup> filteredTokens = new HashMap<>();
 
     public ResultRecord(List<String> initialListOfTokens) {
+        if (initialListOfTokens == null || initialListOfTokens.isEmpty()) {
+            return;
+        }
+
         for (String token : initialListOfTokens) {
             addToken(token);
         }
