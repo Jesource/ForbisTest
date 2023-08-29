@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Previous Results</title>
+</head>
+<body style="background-color: lightgray">
+<h1>Result of Previous Requests</h1>
+
+<div th:if="${previousResults}">
+    <div th:each="record : ${previousResults}">
+        <div th:if="${record.getTokenGroups().size() > 0}">
+            <h4 th:text="${record.getTimestamp()}">timestamp</h4>
+            <ul >
+                <li th:each="tokenGroup : ${record.getTokenGroups()}"
+                    th:text="${tokenGroup}">token group
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<form th:action="@{/}" action="#" method="get">
+    <button type="submit">Go Back</button>
+</form>
+</body>
+</html>

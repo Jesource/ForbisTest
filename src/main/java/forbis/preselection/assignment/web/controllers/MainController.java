@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 @Controller("/")
@@ -36,5 +37,19 @@ public class MainController {
         model.addAttribute("tokens", formattedOutput);
 
         return "index";
+    }
+
+    @GetMapping("/previous-results")
+    public String previousResults(Model model) {
+        try {
+            model.addAttribute(
+                    "previousResults",
+                    mainPageService.getPreviousResults()
+            );
+        } catch (IOException e) {
+            log.error("Failed to display previous results: {}", e.getMessage());
+        }
+
+        return "previous_results";
     }
 }

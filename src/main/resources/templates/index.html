@@ -4,11 +4,14 @@
     <meta charset="UTF-8">
     <title>Main Page</title>
 </head>
-<body>
+<body style="background-color: lightgray">
 <h1>Hello there!</h1>
 <div>
     <form action="#" th:action="@{/}" method="post" enctype="multipart/form-data">
-        <textarea name="inputText" placeholder="Write your text here"></textarea>
+        <textarea name="inputText"
+                  placeholder="Write your text here"
+                  style="font-size: large"
+        ></textarea>
         <br>
         <p>
             Upload yor text file: <input type="file" name="inputFile" >
@@ -29,5 +32,10 @@
         <br>
     </tr>
 </div>
+
+<h5>Previous results:</h5>
+<form action="/previous-results" method="get">
+    <button type="submit">See previous results</button>
+</form>
 </body>
 </html>
