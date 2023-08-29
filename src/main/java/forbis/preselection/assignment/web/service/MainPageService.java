@@ -10,7 +10,6 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.Scanner;
 
 import static forbis.preselection.assignment.utils.TextProcessingUtil.breakTextToTokens;
 import static forbis.preselection.assignment.utils.TextProcessingUtil.checkIfTokenContainsOnlyLatinLetters_withASCIISpecifics;
@@ -19,15 +18,6 @@ import static forbis.preselection.assignment.utils.WritingToFileUtil.writeResult
 @Service
 @Slf4j
 public class MainPageService {
-    public List<String> proceedTextInput(String inputText) {
-        List<String> tokens = breakTextToTokens(inputText);
-        ResultRecord result = new ResultRecord(filterTokens(tokens));
-        writeResultRecordToFile(result);
-
-        return result.getFormattedTokenGroupsAsStrings();
-    }
-
-
     private List<String> filterTokens(List<String> tokens) {
         List<String> filteredTokens = new ArrayList<>();
 
@@ -65,17 +55,14 @@ public class MainPageService {
 
     private Collection<String> getValidTokensFromFile(MultipartFile inputFile) {
         try {
-            List<String> tokens = new ArrayList<>();
-
             String fileContents = new String(inputFile.getBytes(), StandardCharsets.UTF_8);
-            Scanner scanner = new Scanner(fileContents);
-            while (scanner.hasNext()) {
-                tokens.add(scanner.next());
-            }
+            List<String> tokens = breakTextToTokens(fileContents);
 
             return filterTokens(tokens);
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            log.error("Failed to read file contents: {}", e.getMessage());
+
+            return null;
         }
     }
 
