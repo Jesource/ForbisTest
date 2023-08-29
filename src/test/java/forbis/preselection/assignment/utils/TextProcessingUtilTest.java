@@ -1,6 +1,6 @@
 package forbis.preselection.assignment.utils;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import java.util.Arrays;
 import java.util.List;
@@ -8,10 +8,10 @@ import java.util.List;
 import static forbis.preselection.assignment.utils.TextProcessingUtil.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-class TextProcessingUtilTest {
+public class TextProcessingUtilTest {
 
     @Test
-    void givenTextWithTokens_whenBreakingTextToListOfTokens_thenOnlyPunctuationMarksAreNotReturnedAsTokens() {
+    public void givenTextWithTokens_whenBreakingTextToListOfTokens_thenOnlyPunctuationMarksAreNotReturnedAsTokens() {
         String inputText = "Hello, my name is Andrej. J. . ? ! , ";
         List<String> expected = Arrays.asList("Hello", "my", "name", "is", "Andrej", "J");
 
@@ -22,7 +22,7 @@ class TextProcessingUtilTest {
 
 
     @Test
-    void givenStringWithPunctuationMarks_whenFilteringPunctuationMarks_thenStringWithNoPunctuationMarksReturned() {
+    public void givenStringWithPunctuationMarks_whenFilteringPunctuationMarks_thenStringWithNoPunctuationMarksReturned() {
         String inputText = "/Hello', [my]; (name) is:- @{\"Andrej\"}*. J. . ? ! ,";
         String expected = "Hello my name is Andrej J";
 
@@ -33,7 +33,7 @@ class TextProcessingUtilTest {
 
 
     @Test
-    void checkIfTokenContainsOnlyLatinLetters_withRegexTest() {
+    public void checkIfTokenContainsOnlyLatinLetters_withRegexTest() {
         assertAll(
                 () -> assertTrue(checkIfTokenContainsOnlyLatinLetters_withRegex("aBc")),
                 () -> assertFalse(checkIfTokenContainsOnlyLatinLetters_withRegex("aBc1")),
@@ -45,7 +45,7 @@ class TextProcessingUtilTest {
 
 
     @Test
-    void checkIfTokenContainsOnlyLatinLetters_withASCIISpecificsTest() {
+    public void checkIfTokenContainsOnlyLatinLetters_withASCIISpecificsTest() {
         assertAll(
                 () -> assertTrue(checkIfTokenContainsOnlyLatinLetters_withASCIISpecifics("aBc")),
                 () -> assertTrue(checkIfTokenContainsOnlyLatinLetters_withASCIISpecifics("az")),

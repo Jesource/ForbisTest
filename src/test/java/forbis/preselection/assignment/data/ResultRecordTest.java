@@ -2,16 +2,15 @@ package forbis.preselection.assignment.data;
 
 import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
-import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class ResultRecordTest {
+public class ResultRecordTest {
     @Test
-    void givenOneValidToken_whenCallingMethodForRetrievingFormattedTokenGroups_thenOneWellFormattedStringIsReturned() {
+    public void givenOneValidToken_whenCallingMethodForRetrievingFormattedTokenGroups_thenOneWellFormattedStringIsReturned() {
         ResultRecord record = new ResultRecord(List.of("hello"));
 
         assertEquals(
@@ -21,7 +20,7 @@ class ResultRecordTest {
     }
 
     @Test
-    void givenNewTokenForNonExistingGroup_whenRecordHasExistingTokenGroup_thenNewTokenGroupCreatedAndSortedAlphabetically() {
+    public void givenNewTokenForNonExistingGroup_whenRecordHasExistingTokenGroup_thenNewTokenGroupCreatedAndSortedAlphabetically() {
         ResultRecord record = new ResultRecord(List.of("hello"));
 
         record.addToken("lambda");
@@ -33,14 +32,14 @@ class ResultRecordTest {
     }
 
     @Test
-    void givenNull_whenCreatingNewResultRecord_thenEmptyArrayOfFormattedStringsReturned() {
+    public void givenNull_whenCreatingNewResultRecord_thenEmptyArrayOfFormattedStringsReturned() {
         ResultRecord record = new ResultRecord(null);
 
         assertEquals(List.of(), record.getFormattedTokenGroupsAsStrings());
     }
 
     @Test
-    void givenEmptyList_whenCreatingNewResultRecord_thenEmptyArrayOfFormattedStringsReturned() {
+    public void givenEmptyList_whenCreatingNewResultRecord_thenEmptyArrayOfFormattedStringsReturned() {
         ResultRecord record = new ResultRecord(List.of());
 
         assertEquals(List.of(), record.getFormattedTokenGroupsAsStrings());

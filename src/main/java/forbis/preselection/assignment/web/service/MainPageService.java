@@ -22,7 +22,7 @@ import static forbis.preselection.assignment.utils.WritingToFileUtil.writeResult
 @Service
 @Slf4j
 public class MainPageService {
-    private List<String> filterTokens(List<String> tokens) {
+    List<String> filterTokens(List<String> tokens) {
         List<String> filteredTokens = new ArrayList<>();
 
         for (String token : tokens) {
@@ -59,7 +59,7 @@ public class MainPageService {
         }
     }
 
-    private void processTextInput(String inputText, Collection<String> validTokens) {
+    void processTextInput(String inputText, Collection<String> validTokens) {
         if (!inputText.isBlank()) {
             validTokens.addAll(getValidTokensFromText(inputText));
         }

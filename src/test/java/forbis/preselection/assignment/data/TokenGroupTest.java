@@ -1,13 +1,13 @@
 package forbis.preselection.assignment.data;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class TokenGroupTest {
+public class TokenGroupTest {
 
     @Test
-    void givenTokens_whenPopulatingTokenGroup_thenWellFormattedStringIsExpected() {
+    public void givenTokens_whenPopulatingTokenGroup_thenWellFormattedStringIsExpected() {
         TokenGroup group = new TokenGroup('a');
 
         group.addToken("Carla");
