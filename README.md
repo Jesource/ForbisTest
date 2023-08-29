@@ -1,3 +1,12 @@
+# About the project
+
+This project runs on port 8080. 
+Main page can be accessed from [localhost:8080](localhost:8080).
+Page with saved previous results can be accessed from [localhost:8080/previous-results](localhost:8080/previous-results).
+
+Processed text results are saved in `results/` folder in file named `out1`
+
+
 # Instructions how to run project
 
 ## Option A: running executable
