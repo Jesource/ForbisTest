@@ -57,4 +57,15 @@ public class ResultRecord {
 
         return output;
     }
+
+    public List<String> getFormattedTokenGroupsAsStrings(char separator) {
+        Object[] filteredKeys = filteredTokens.keySet().stream().sorted().toArray();
+        List<String> output = new ArrayList<>();
+
+        for (Object key : filteredKeys) {
+            output.add(filteredTokens.get(key).getFormattedResultString(separator));
+        }
+
+        return output;
+    }
 }

@@ -17,6 +17,21 @@
             Upload yor text file: <input type="file" name="inputFile" >
         </p>
         <br>
+        <fieldset>
+            <legend>Select a separator for your output:</legend>
+
+            <div>
+                <input type="radio" id="spaceSeparator" name="separator" value=" " checked />
+                <label for="spaceSeparator">' ' (<i>single space</i>)</label>
+            </div>
+
+            <div>
+                <input type="radio" id="commaSeparator" name="separator" value="," />
+                <label for="commaSeparator">'<strong>,</strong>' (<i>comma</i>)</label>
+            </div>
+
+        </fieldset>
+        <br>
         <button type="submit">Process text</button>
     </form>
 </div>

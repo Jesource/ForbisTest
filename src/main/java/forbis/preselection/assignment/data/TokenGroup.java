@@ -31,7 +31,7 @@ public class TokenGroup {
             stringBuilder.append(token);
             stringBuilder.append(separator);
         }
-        stringBuilder.deleteCharAt(stringBuilder.length() - 1);
+        stringBuilder.deleteCharAt(stringBuilder.length() - 1); // Remove last separator
 
         return stringBuilder.toString();
     }

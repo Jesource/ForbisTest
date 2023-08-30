@@ -8,6 +8,7 @@ public class TokenGroupTest {
 
 
     @Test
+    @org.junit.Test
     public void givenTokens_whenPopulatingTokenGroup_thenWellFormattedStringIsExpected() {
         TokenGroup group = new TokenGroup('a');
 
@@ -25,6 +26,7 @@ public class TokenGroupTest {
 
 
     @Test
+    @org.junit.Test
     public void givenTokensAndSeparator_whenCallingForFormattedString_thenWellFormattedStringIsExpected() {
         TokenGroup group = new TokenGroup('a');
 

@@ -1,6 +1,8 @@
 package forbis.preselection.assignment.utils;
 
-import org.junit.Test;
+
+
+import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.List;
@@ -11,6 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class TextProcessingUtilTest {
 
     @Test
+    @org.junit.Test
     public void givenTextWithTokens_whenBreakingTextToListOfTokens_thenOnlyPunctuationMarksAreNotReturnedAsTokens() {
         String inputText = "Hello, my name is Andrej. J. . ? ! , ";
         List<String> expected = Arrays.asList("Hello", "my", "name", "is", "Andrej", "J");
@@ -22,6 +25,7 @@ public class TextProcessingUtilTest {
 
 
     @Test
+    @org.junit.Test
     public void givenStringWithPunctuationMarks_whenFilteringPunctuationMarks_thenStringWithNoPunctuationMarksReturned() {
         String inputText = "/Hello', [my]; (name) is:- @{\"Andrej\"}*. J. . ? ! ,";
         String expected = "Hello my name is Andrej J";
@@ -33,6 +37,7 @@ public class TextProcessingUtilTest {
 
 
     @Test
+    @org.junit.Test
     public void checkIfTokenContainsOnlyLatinLetters_withRegexTest() {
         assertAll(
                 () -> assertTrue(checkIfTokenContainsOnlyLatinLetters_withRegex("aBc")),
@@ -45,6 +50,7 @@ public class TextProcessingUtilTest {
 
 
     @Test
+    @org.junit.Test
     public void checkIfTokenContainsOnlyLatinLetters_withASCIISpecificsTest() {
         assertAll(
                 () -> assertTrue(checkIfTokenContainsOnlyLatinLetters_withASCIISpecifics("aBc")),

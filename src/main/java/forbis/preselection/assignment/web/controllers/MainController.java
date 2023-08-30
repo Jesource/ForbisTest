@@ -29,11 +29,13 @@ public class MainController {
     @PostMapping
     public String proceedInput(Model model,
                                @RequestParam String inputText,
-                               @RequestParam MultipartFile inputFile) {
+                               @RequestParam MultipartFile inputFile,
+                               @RequestParam char separator
+    ) {
         log.info("Text imputed to process: {}", inputText);
         log.info("File imputed to process: {}", inputFile.getName());
 
-        List<String> formattedOutput = mainPageService.proceedInput(inputText, inputFile);
+        List<String> formattedOutput = mainPageService.proceedInput(inputText, inputFile, separator);
         model.addAttribute("tokens", formattedOutput);
 
         return "index";

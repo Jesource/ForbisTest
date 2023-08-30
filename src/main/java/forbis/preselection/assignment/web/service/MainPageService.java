@@ -34,14 +34,14 @@ public class MainPageService {
         return filteredTokens;
     }
 
-    public List<String> proceedInput(String inputText, MultipartFile inputFile) {
+    public List<String> proceedInput(String inputText, MultipartFile inputFile, char separator) {
         List<String> validTokens = new ArrayList<>();
 
         processInputs(inputText, inputFile, validTokens);
         ResultRecord result = new ResultRecord(validTokens);
         writeResultRecordToFile(result);
 
-        return result.getFormattedTokenGroupsAsStrings();
+        return result.getFormattedTokenGroupsAsStrings(separator);
     }
 
     private void processInputs(String inputText, MultipartFile inputFile, List<String> validTokens) {
@@ -60,7 +60,7 @@ public class MainPageService {
     }
 
     void processTextInput(String inputText, Collection<String> validTokens) {
-        if (!inputText.isBlank()) {
+        if (inputText != null && !inputText.isBlank()) {
             validTokens.addAll(getValidTokensFromText(inputText));
         }
     }

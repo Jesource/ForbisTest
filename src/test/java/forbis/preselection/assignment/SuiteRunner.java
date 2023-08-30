@@ -11,7 +11,7 @@ public class SuiteRunner {
     public static void main(String[] args) {
         Result result = JUnitCore.runClasses(TestSuite.class);
         printFailures(result.getFailures());
-        System.out.println(result.wasSuccessful());
+        System.out.println("Did all tests pass: " + result.wasSuccessful());
     }
 
     private static void printFailures(List<Failure> failures) {
