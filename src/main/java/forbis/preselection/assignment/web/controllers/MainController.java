@@ -6,8 +6,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.io.IOException;
 import java.util.List;
@@ -29,18 +31,13 @@ public class MainController {
 
     @PostMapping
     public String proceedInput(Model model,
-                               @RequestParam String inputText,
-                               @RequestParam MultipartFile inputFile,
                                @RequestParam char separator,
                                @ModelAttribute InputModel inputModel
     ) {
-        log.info("Text imputed to process: {}", inputText);
-        log.info("File imputed to process: {}", inputFile.getName());
+        log.info("Provided text inputs:\n\t1) {}\n\t2) {}", inputModel.getTextInput1(), inputModel.getTextInput2());
+        log.info("Provided file inputs:\n\t1) {}\n\t2) {}", inputModel.getFile1(), inputModel.getFile2());
 
-        System.out.println(model.getAttribute("inputModel"));
-        log.warn("Provided text inputs:\n\t1) {}\n\t2) {}", inputModel.getTextInput1(), inputModel.getTextInput2());
-
-        List<String> formattedOutput = mainPageService.proceedInput(inputText, inputFile, separator);
+        List<String> formattedOutput = mainPageService.proceedInput(inputModel, separator);
         model.addAttribute("tokens", formattedOutput);
         model.addAttribute("inputModel", new InputModel());
 

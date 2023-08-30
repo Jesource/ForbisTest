@@ -2,6 +2,7 @@ package forbis.preselection.assignment.web.service;
 
 import forbis.preselection.assignment.data.ResultRecord;
 import forbis.preselection.assignment.dto.ResultRecordDto;
+import forbis.preselection.assignment.web.models.InputModel;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -34,28 +35,13 @@ public class MainPageService {
         return filteredTokens;
     }
 
-    public List<String> proceedInput(String inputText, MultipartFile inputFile, char separator) {
-        List<String> validTokens = new ArrayList<>();
-
-        processInputs(inputText, inputFile, validTokens);
-        ResultRecord result = new ResultRecord(validTokens);
-        writeResultRecordToFile(result);
-
-        return result.getFormattedTokenGroupsAsStrings(separator);
-    }
-
-    private void processInputs(String inputText, MultipartFile inputFile, List<String> validTokens) {
-        try {
-            processTextInput(inputText, validTokens);
-            processFileInput(inputFile, validTokens);
-        } catch (IOException e) {
-            log.error("Faced some issues with processing inputs: {}", e.getMessage());
-        }
-    }
-
-    private void processFileInput(MultipartFile inputFile, Collection<String> validTokens) throws IOException {
-        if (!inputFile.isEmpty()) {
-            validTokens.addAll(getValidTokensFromFile(inputFile));
+    private void processFileInput(MultipartFile inputFile, Collection<String> validTokens) {
+        if (inputFile != null && !inputFile.isEmpty()) {
+            try {
+                validTokens.addAll(getValidTokensFromFile(inputFile));
+            } catch (IOException e) {
+                log.warn("Failed to proceed file '{}'", inputFile.getOriginalFilename());
+            }
         }
     }
 
@@ -110,5 +96,18 @@ public class MainPageService {
         reader.close();
 
         return rawLines;
+    }
+
+    public List<String> proceedInput(InputModel inputModel, char separator) {
+        List<String> validTokens = new ArrayList<>();
+
+        processTextInput(inputModel.getTextInput1(), validTokens);
+        processTextInput(inputModel.getTextInput2(), validTokens);
+        processFileInput(inputModel.getFile1(), validTokens);
+        processFileInput(inputModel.getFile2(), validTokens);
+        ResultRecord result = new ResultRecord(validTokens);
+        writeResultRecordToFile(result);
+
+        return result.getFormattedTokenGroupsAsStrings(separator);
     }
 }

@@ -5,13 +5,9 @@
     <title>Main Page</title>
 </head>
 <body style="background-color: lightgray">
-<h1>Hello there!</h1>
+<h1>Welcome to input processor</h1>
 <div>
     <form action="#" th:action="@{/}" method="post" enctype="multipart/form-data" th:object="${inputModel}">
-        <textarea name="inputText"
-                  placeholder="Write your text here"
-                  style="font-size: large"
-        ></textarea>
         <fieldset>
             <legend>Process several text inputs</legend>
             <textarea
@@ -25,10 +21,12 @@
                       th:field="*{textInput2}"
             ></textarea>
         </fieldset>
-        <br>
-        <p>
-            Upload yor text file: <input type="file" name="inputFile" >
-        </p>
+        <fieldset>
+            <legend>Upload yor text files</legend>
+            <input type="file" name="inputFile" th:field="*{file1}">
+            <br>
+            <input type="file" name="inputFile" th:field="*{file2}">
+        </fieldset>
         <br>
         <fieldset>
             <legend>Select a separator for your output:</legend>
