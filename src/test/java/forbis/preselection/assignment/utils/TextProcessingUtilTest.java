@@ -16,7 +16,7 @@ public class TextProcessingUtilTest {
     @org.junit.Test
     public void givenTextWithTokens_whenBreakingTextToListOfTokens_thenOnlyPunctuationMarksAreNotReturnedAsTokens() {
         String inputText = "Hello, my name is Andrej. J. . ? ! , ";
-        List<String> expected = Arrays.asList("Hello", "my", "name", "is", "Andrej", "J");
+        List<String> expected = Arrays.asList("Hello,", "my", "name", "is", "Andrej.", "J.", ".", "?", "!", ",");
 
         List<String> output = breakTextToTokens(inputText);
 

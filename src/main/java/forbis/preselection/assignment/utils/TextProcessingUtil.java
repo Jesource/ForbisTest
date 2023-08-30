@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class TextProcessingUtil {
 
     public static List<String> breakTextToTokens(String text) {
-        Scanner scanner = new Scanner(removeAllPunctuationMarks(text));
+        Scanner scanner = new Scanner(text);
         ArrayList<String> tokens = new ArrayList<>();
 
         while (scanner.hasNext()) {
