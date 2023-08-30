@@ -7,11 +7,24 @@
 <body style="background-color: lightgray">
 <h1>Hello there!</h1>
 <div>
-    <form action="#" th:action="@{/}" method="post" enctype="multipart/form-data">
+    <form action="#" th:action="@{/}" method="post" enctype="multipart/form-data" th:object="${inputModel}">
         <textarea name="inputText"
                   placeholder="Write your text here"
                   style="font-size: large"
         ></textarea>
+        <fieldset>
+            <legend>Process several text inputs</legend>
+            <textarea
+                      placeholder="Write your text here"
+                      style="font-size: large"
+                      th:field="*{textInput1}"
+            ></textarea>
+            <textarea
+                      placeholder="Write your text here"
+                      style="font-size: large"
+                      th:field="*{textInput2}"
+            ></textarea>
+        </fieldset>
         <br>
         <p>
             Upload yor text file: <input type="file" name="inputFile" >

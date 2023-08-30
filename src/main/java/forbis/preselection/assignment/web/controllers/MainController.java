@@ -1,13 +1,12 @@
 package forbis.preselection.assignment.web.controllers;
 
+import forbis.preselection.assignment.web.models.InputModel;
 import forbis.preselection.assignment.web.service.MainPageService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -22,6 +21,8 @@ public class MainController {
 
     @GetMapping
     public String welcomePage(Model model) {
+        model.addAttribute("inputModel", new InputModel());
+
         return "index";
     }
 
@@ -30,13 +31,18 @@ public class MainController {
     public String proceedInput(Model model,
                                @RequestParam String inputText,
                                @RequestParam MultipartFile inputFile,
-                               @RequestParam char separator
+                               @RequestParam char separator,
+                               @ModelAttribute InputModel inputModel
     ) {
         log.info("Text imputed to process: {}", inputText);
         log.info("File imputed to process: {}", inputFile.getName());
 
+        System.out.println(model.getAttribute("inputModel"));
+        log.warn("Provided text inputs:\n\t1) {}\n\t2) {}", inputModel.getTextInput1(), inputModel.getTextInput2());
+
         List<String> formattedOutput = mainPageService.proceedInput(inputText, inputFile, separator);
         model.addAttribute("tokens", formattedOutput);
+        model.addAttribute("inputModel", new InputModel());
 
         return "index";
     }
