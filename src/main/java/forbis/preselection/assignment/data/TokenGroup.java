@@ -15,18 +15,25 @@ public class TokenGroup {
     public String getFormattedResultString() {
         return groupSymbol + " "
                 + tokens.size() + " "
-                + getTokensSeparatedWithSpace();
+                + getTokensSeparatedWithProvidedSeparator(' ');
     }
 
-    private String getTokensSeparatedWithSpace() {
+    public String getFormattedResultString(char separator) {
+        return groupSymbol + " "
+                + tokens.size() + " "
+                + getTokensSeparatedWithProvidedSeparator(separator);
+    }
+
+    private String getTokensSeparatedWithProvidedSeparator(char separator) {
         StringBuilder stringBuilder = new StringBuilder();
 
         for (String token : tokens) {
             stringBuilder.append(token);
-            stringBuilder.append(" ");
+            stringBuilder.append(separator);
         }
+        stringBuilder.deleteCharAt(stringBuilder.length() - 1);
 
-        return stringBuilder.toString().trim();
+        return stringBuilder.toString();
     }
 
     public void addToken(String token) {
